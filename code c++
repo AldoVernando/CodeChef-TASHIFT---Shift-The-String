@@ -1,0 +1,45 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main(){
+	
+	int input;
+	string word1 , word2;
+	
+	cin >> input;
+	cin >> word1;
+	cin >> word2;
+	
+	word2 += word2;
+	
+	int common = 0;
+	int result = 0;
+	int temp = 0;
+	
+	for(int i=0;i<input;i+=temp){
+		
+		temp = 0;
+		int indexWord1 = 0;
+		
+		for(int j=i;j<input;j++){
+			if(word2[i] != word1[0]) i++;
+			else break;
+		}
+		
+		for(int j=i;j<input*2;j++){
+			if(word2[j] == word1[indexWord1]) {
+				temp++;
+			}
+			else break;
+			indexWord1++;
+		}
+		
+		if(common < temp){
+			common = temp;
+			result = i;
+		}
+	}
+	
+	cout << result << endl;
+	return 0;
+}
